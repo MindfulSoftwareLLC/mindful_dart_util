@@ -1,8 +1,8 @@
 name: mindful_dart_util
 description: Mindful Software Utilities that only depend on Dart.
 homepage: https://mindfulsoftware.com
-repository: https://github.com/michaelbushe/dart_util
-version: 0.1.0+3
+repository: https://github.com/michaelbushe/mindful_dart_util
+version: 0.1.1+1
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
