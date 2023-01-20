@@ -13,6 +13,7 @@ Directory? userHome() {
   }
 }
 
+/// Expand file paths starting with ~/ or ./ to absolute dirs
 String expandPath(String rootDirName) {
   var fullPath = rootDirName;
   if (rootDirName.startsWith('~/')) {
