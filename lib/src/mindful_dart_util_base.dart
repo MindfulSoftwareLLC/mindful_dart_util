@@ -13,6 +13,16 @@ Directory? userHome() {
   }
 }
 
+String expandPath(String rootDirName) {
+  var fullPath = rootDirName;
+  if (rootDirName.startsWith('~/')) {
+    fullPath = '${userHome()}/${rootDirName.substring(2)}';
+  } else if (rootDirName.startsWith('./')) {
+    fullPath = '${Directory.current.path}/${rootDirName.substring(2)}';
+  }
+  return fullPath;
+}
+
 /// Today's date
 DateTime today() {
   final now = DateTime.now();

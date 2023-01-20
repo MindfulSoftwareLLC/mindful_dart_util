@@ -14,6 +14,9 @@ void main() {
         expect(home?.path, equals('/home/admin'));
       }
     });
+    test('test expand path', () {
+      expect(expandPath('./test'), equals(Directory.current.path + '/test'));
+    });
   });
   group('date', () {
     test("today() is today", () {
