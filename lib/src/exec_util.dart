@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+/// Runs an external process
 void runProcess({
   required String executable,
   required List<String> arguments,
@@ -17,6 +18,7 @@ void runProcess({
   logAndThrowOnNon0Exit(process, throwingError, okExits);
 }
 
+/// Logs the preocess result and throws if non-0
 void logAndThrowOnNon0Exit(ProcessResult process, String message,
     [List<int>? okExits]) {
   final stdout = process.stdout;

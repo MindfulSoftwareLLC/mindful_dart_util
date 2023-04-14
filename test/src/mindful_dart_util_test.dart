@@ -7,7 +7,7 @@ import 'package:test/test.dart';
 void main() {
   group('file', () {
     test("userHome gets the user's home", () {
-      var home = userHome();
+      final home = userHome();
       if (Platform.isMacOS) {
         expect(home?.path, equals('/Users/mbushe'));
       } else {
@@ -15,18 +15,18 @@ void main() {
       }
     });
     test('test expand path', () {
-      expect(expandPath('./test'), equals(Directory.current.path + '/test'));
+      expect(expandPath('./test'), equals('${Directory.current.path}/test'));
     });
   });
   group('date', () {
-    test("today() is today", () {
+    test('today() is today', () {
       final libToday = today();
       final now = DateTime.now();
       expect(libToday.year, equals(now.year));
       expect(libToday.month, equals(now.month));
       expect(libToday.day, equals(now.day));
     });
-    test("dateOneWeekAgo() is a week ago", () {
+    test('dateOneWeekAgo() is a week ago', () {
       final libdateOneWeekAgo = dateOneWeekAgo();
       final now = DateTime.now();
       expect(libdateOneWeekAgo.year, equals(now.year));

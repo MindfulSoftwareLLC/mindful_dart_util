@@ -2,8 +2,9 @@
 
 import 'dart:io';
 
-import 'exec_util.dart';
+import 'package:mindful_dart_util/src/exec_util.dart';
 
+/// Clone a git repo
 void cloneAndBranch({
   required String repo,
   required Directory rootDir,
@@ -21,6 +22,7 @@ void cloneAndBranch({
   );
 }
 
+/// Create a git branch
 void createBranch({
   required String branchName,
   required String workingDir,
@@ -35,6 +37,7 @@ void createBranch({
   ///128 - branch exists
 }
 
+/// Clone a git repo
 void cloneRepo({
   required String repo,
   required Directory workingDir,

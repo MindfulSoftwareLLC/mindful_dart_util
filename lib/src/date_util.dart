@@ -1,10 +1,11 @@
 /// Today's date
-DateTime todayDU() {
+/// Today's date
+DateTime today() {
   final now = DateTime.now();
   return DateTime(now.year, now.month, now.day);
 }
 
 /// The date 7 days ago
-DateTime dateOneWeekAgoDU() {
-  return todayDU().subtract(const Duration(days: 7));
+DateTime dateOneWeekAgo() {
+  return today().subtract(const Duration(days: 7));
 }

@@ -1,5 +1,7 @@
 import 'dart:io';
 
+/// Create a directory and if it exists,
+/// backup the existing directory, named -1, -2, etc.
 void createDirMoveOld(Directory rootDir) {
   final dirPath = rootDir.absolute.path;
   if (rootDir.existsSync()) {
