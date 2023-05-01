@@ -24,8 +24,8 @@ String expandPath(String rootDirName) {
 
 /// Ensure a directory exists
 void ensureDir(String dirName) {
-  final file = File(dirName);
-  if (!file.existsSync()) {
-    file.createSync(recursive: true);
+  final dir = Directory(dirName);
+  if (!dir.existsSync()) {
+    dir.createSync(recursive: true);
   }
 }
