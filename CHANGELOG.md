@@ -1,3 +1,6 @@
+# 0.6.4
+- chore: pub upgrade.
+
 # 0.6.3
 - bug: createDir created a file.
 
