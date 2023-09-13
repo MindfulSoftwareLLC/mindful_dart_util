@@ -1,3 +1,6 @@
+# 0.7.4
+- feat: Added executingScriptsDirectory
+
 # 0.6.4
 - chore: pub upgrade.
 

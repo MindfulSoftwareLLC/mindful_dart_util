@@ -2,7 +2,17 @@
 
 import 'dart:io';
 
-/// Runs an external process
+import 'package:path/path.dart';
+
+/// The directory of the dart file with the currently executing main()
+Directory executingScriptsDirectory() {
+  final pathToScript = Platform.script.toFilePath();
+  final pathToDirectory = dirname(pathToScript);
+  print(pathToDirectory);
+  return Directory(pathToDirectory);
+}
+
+/// Runs an external process, forces error handler, explicit working dir
 void runProcess({
   required String executable,
   required List<String> arguments,
@@ -18,7 +28,7 @@ void runProcess({
   logAndThrowOnNon0Exit(process, throwingError, okExits);
 }
 
-/// Logs the preocess result and throws if non-0
+/// Logs the process result and throws if non-0
 void logAndThrowOnNon0Exit(ProcessResult process, String message,
     [List<int>? okExits]) {
   final stdout = process.stdout;
