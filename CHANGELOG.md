@@ -1,4 +1,4 @@
-# 0.7.4
+# 0.7.0
 - feat: Added executingScriptsDirectory
 
 # 0.6.4
