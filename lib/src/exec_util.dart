@@ -8,7 +8,6 @@ import 'package:path/path.dart';
 Directory executingScriptsDirectory() {
   final pathToScript = Platform.script.toFilePath();
   final pathToDirectory = dirname(pathToScript);
-  print(pathToDirectory);
   return Directory(pathToDirectory);
 }
 

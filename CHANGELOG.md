@@ -1,3 +1,6 @@
+# 0.7.1
+- chore: do not invoke print :)
+
 # 0.7.0
 - feat: Added executingScriptsDirectory
 
