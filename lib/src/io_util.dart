@@ -3,6 +3,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:crypto/crypto.dart' show sha256;
 import 'package:io/io.dart';
 
@@ -18,8 +19,8 @@ Future<bool> areFilesIdentical(File file1, File file2) async {
 
 /// @return true if file1's File.stat().size is the same as file2's.
 Future<bool> areFilesOfEqualSize(File file1, File file2) async {
-  final file1Stat = await file1.stat();
-  final file2Stat = await file2.stat();
+  final file1Stat = file1.statSync();
+  final file2Stat = file2.statSync();
   return file1Stat.size == file2Stat.size;
 }
 
@@ -69,17 +70,23 @@ Future<void> deepCopyDirectory(
   return copyPath(sourceDirPath, destinationDirPath);
 }
 
+/// Saves a file with the dups
 Future<void> saveResults(
     Map<String, List<String>> duplicates, String filePath) async {
   final file = File(filePath);
   await file.writeAsString(json.encode(duplicates));
 }
 
-// Callback function types
+/// Callback function for start of check
 typedef OnDupCheckStartedCallback = void Function(File file);
+
+/// Callback function for dup found
 typedef DupFoundCallback = void Function(File originalFile, File duplicateFile);
+
+/// Callback function for no dups found
 typedef NoDuplicateCallback = void Function(File file);
 
+/// Looks for dups and saves a report
 Future<Map<File, List<File>>> findDuplicateFilesWithSave(
     Directory directory,
     OnDupCheckStartedCallback onDupCheckStartedCallback,
@@ -100,7 +107,8 @@ Future<Map<File, List<File>>> findDuplicateFilesWithSave(
     fileChecksums[file.absolute.path] = checksum;
   }));
 
-  // This map will keep track of files that have already been compared to avoid redundant checks.
+  // This map will keep track of files that have already been compared to avoid
+  // redundant checks.
   final Map<String, bool> checkedFiles = {};
 
   for (final file1 in files) {
@@ -116,7 +124,8 @@ Future<Map<File, List<File>>> findDuplicateFilesWithSave(
 
     for (final file2 in files) {
       if (file1 == file2 || checkedFiles.containsKey(file2.absolute.path)) {
-        // Skip if it's the same file or if the second file has already been checked.
+        // Skip if it's the same file or if the second file has already been
+        // checked.
         continue;
       }
 
@@ -146,6 +155,7 @@ Future<Map<File, List<File>>> findDuplicateFilesWithSave(
   return actualDuplicates;
 }
 
+/// Partition a list into size'd chunks
 Iterable<List<T>> partition<T>(List<T> list, int size) {
   return Iterable.generate(
     (list.length + size - 1) ~/ size,
@@ -156,6 +166,7 @@ Iterable<List<T>> partition<T>(List<T> list, int size) {
   );
 }
 
+/// Returns a map of a file to all it's dups
 Future<Map<File, List<File>>> findDuplicateFiles(
     Directory directory,
     String jsonResultPath,
@@ -181,7 +192,6 @@ Future<Map<File, List<File>>> findDuplicateFiles(
   final candidates = filesBySize.values.where((list) => list.length > 1);
   for (final fileList in candidates) {
     for (final file in fileList) {
-      print('computing SHA256Checksum for ${file.absolute.path}');
       final checksum = await computeSHA256Checksum(file);
       checksumsByFile[file] = checksum;
       potentialDuplicatesByChecksum[checksum] =
@@ -203,8 +213,9 @@ Future<Map<File, List<File>>> findDuplicateFiles(
       final file1Checksum = checksumsByFile[file1];
       for (final File file2
           in potentialDuplicatesByChecksum[file1Checksum] ?? []) {
-        if (file2.absolute.path == file1.absolute.path)
+        if (file2.absolute.path == file1.absolute.path) {
           continue; // Skip comparing file to itself.
+        }
 
         if (file1Checksum == checksumsByFile[file2]) {
           foundDuplicate = true;
