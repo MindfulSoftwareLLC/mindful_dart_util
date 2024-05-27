@@ -1,3 +1,6 @@
+# 0.7.2
+- chore: git init
+
 # 0.7.1
 - chore: do not invoke print :)
 

@@ -12,7 +12,7 @@ Directory executingScriptsDirectory() {
 }
 
 /// Runs an external process, forces error handler, explicit working dir
-void runProcess({
+void runProcessSync({
   required String executable,
   required List<String> arguments,
   required String workingDir,
