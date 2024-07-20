@@ -1,3 +1,6 @@
+# 0.9.0
+- feat: Default app logger with static methods
+
 # 0.8.0
 - chore: Minor changes to git exec commands and exec.  Added functions to deeply copy a directory and to compare files and directories.
 
