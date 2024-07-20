@@ -7,4 +7,5 @@ export 'src/exec_util.dart';
 export 'src/git_exec.dart';
 export 'src/io_exec.dart';
 export 'src/io_util.dart';
+export 'src/log.dart';
 export 'src/same_types.dart';
