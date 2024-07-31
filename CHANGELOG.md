@@ -1,3 +1,6 @@
+# 0.10.0
+- chore: Improved logging, tests
+
 # 0.9.0
 - feat: Default app logger with static methods
 

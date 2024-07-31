@@ -19,3 +19,15 @@ doc/api/
 *.js_
 *.js.deps
 *.js.map
+/coverage/src/cli_util_test.dart.func.html
+/coverage/src/cli_util_test.dart.func-sort-c.html
+/coverage/src/cli_util_test.dart.gcov.html
+/coverage/src/date_util_test.dart.func.html
+/coverage/src/date_util_test.dart.func-sort-c.html
+/coverage/src/date_util_test.dart.gcov.html
+/coverage/src/exec_util_test.dart.func.html
+/coverage/src/exec_util_test.dart.func-sort-c.html
+/coverage/src/exec_util_test.dart.gcov.html
+/coverage/test/src/cli_util_test.dart.vm.json
+/coverage/test/src/date_util_test.dart.vm.json
+/coverage/test/src/exec_util_test.dart.vm.json
