@@ -12,7 +12,7 @@ Future<String> fileStringFromCli(
     required List<String> args}) async {
   File devOpsConfigFile;
   final cliLibDevOpsConfigArgPosition = args.indexOf(param);
-  if (args.length == cliLibDevOpsConfigArgPosition) {
+  if (args.length >= cliLibDevOpsConfigArgPosition + 1) {
     final message = '$command $param option requires a file.';
     throw UsageException(message, '--$param <file>');
   }

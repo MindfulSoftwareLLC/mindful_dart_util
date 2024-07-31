@@ -1,11 +1,13 @@
-/// Today's date
+import 'package:clock/clock.dart';
+
 /// Today's date
 DateTime today() {
-  final now = DateTime.now();
+  final now = clock.now();
   return DateTime(now.year, now.month, now.day);
 }
 
 /// The date 7 days ago
 DateTime dateOneWeekAgo() {
-  return today().subtract(const Duration(days: 7));
+  final sevenDaysAgo = clock.now().subtract(const Duration(days: 7));
+  return DateTime(sevenDaysAgo.year, sevenDaysAgo.month, sevenDaysAgo.day);
 }
