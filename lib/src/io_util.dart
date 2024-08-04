@@ -233,23 +233,4 @@ Future<Map<File, List<File>>> findDuplicateFiles(
     }), eagerError: true);
   }
   return duplicates;
-
-  /*
-  * ///////////
-      onDupCheckStartedCallback(file1);
-          matchFoundCallback(file1, file2);
-          matchFoundForFile1 = true;
-        }
-      }
-      if (!matchFoundForFile1) {
-        noDuplicateCallback(file1);
-      }
-    }));
-
-    // Periodically save results to avoid losing progress
-    await saveResults(duplicates, '$jsonResultPath-temp');
-  }
-
-  */
-  // Here, implement your logic to handle the 'duplicates' map as required.
 }
